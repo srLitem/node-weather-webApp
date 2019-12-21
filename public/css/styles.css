@@ -40,6 +40,8 @@ header a {
 
 .portrait {
     width: 250px;
+    margin: auto;
+    display: block;
 }
 
 input {
