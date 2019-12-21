@@ -63,6 +63,12 @@ button {
     color: #313035;
 }
 
+#message-error{
+    font-family: Arial;
+    text-align: center;
+    color: #831d18;
+}
+
 #message-1{
     font-family: Arial;
     text-align: center;
