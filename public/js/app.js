@@ -28,7 +28,7 @@ weatherForm.addEventListener('submit', (e) => {
                 messageTwo.textContent = data.forecastMessage
                 messageThree.textContent = data.precip
                 console.log(data.iconito)
-                if (data.iconito == 'clear day' || data.iconito == 'clear-night' || data.iconito == 'cloudy' || data.iconito == 'fog' || data.iconito == 'partly-cloudy-day' || data.iconito == 'partly-cloudy-night' || data.iconito == 'rain' || data.iconito == 'sleet' || data.iconito == 'snow' || data.iconito == 'wind') {
+                if (data.iconito == 'clear-day' || data.iconito == 'clear-night' || data.iconito == 'cloudy' || data.iconito == 'fog' || data.iconito == 'partly-cloudy-day' || data.iconito == 'partly-cloudy-night' || data.iconito == 'rain' || data.iconito == 'sleet' || data.iconito == 'snow' || data.iconito == 'wind') {
                     iconito.src = '/img/icons/' + data.iconito + '.png'
 
                 } else {
