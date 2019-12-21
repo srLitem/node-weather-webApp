@@ -56,21 +56,17 @@ app.get('/weather', (req, res) => {
                 if (error) { //Si hay algun error, muestralo
                     return res.send({ error })
                 } else {
-
                     res.send({
-                        forecast: forecastData,
+                        forecastMessage: forecastData.message,
                         location,
-                        address: req.query.address
+                        address: req.query.address,
+                        iconito: forecastData.iconito,
+                        precip: forecastData.precipProb
                     })
                 }
             })
         }
     })
-    // res.send({
-    //     address: req.query.address,
-    //     forecast: 'It\'s sunny outside',
-    //     location: 'Amsterdam'
-    // })
 })
 
 

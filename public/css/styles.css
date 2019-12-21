@@ -55,10 +55,34 @@ button {
     padding: 8px;
 }
 
+#welcomeMessage{
+    font-family: Arial;
+    font-size: small;
+    color: #313035;
+}
+
 #message-1{
-    color: #3c3d5c;
+    font-family: Arial;
+    text-align: center;
+    color: #0f1586;
+    font-size: large;
 }
 
 #message-2{
-    color: #26273d;
+    font-family: Arial;
+    text-align: center;
+    color: #3a3472;
+}
+
+#message-3{
+    font-family: Arial;
+    text-align: center;
+    color: #3a3472;
+}
+
+#iconito{
+    width: 100px;
+    padding: 10px;
+    margin: auto;
+    display: block;
 }

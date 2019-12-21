@@ -8,7 +8,12 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback(body.error, undefined)
         } else {
-            Response = body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degrees out. There is a ' + body.currently.precipProbability + '% chance of rain'
+            Response = {
+                message: body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degrees out.',
+                iconito: body.currently.icon,
+                precipProb: 'There is a ' + (body.currently.precipProbability * 100) + '% chance of rain'
+            }
+            console.log(Response.iconito)
             callback(undefined, Response)
         }
     })
