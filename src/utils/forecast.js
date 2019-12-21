@@ -1,7 +1,8 @@
 const request = require('request')
+const dotenv = require('dotenv').config()
 
 const forecast = (latitude, longitude, callback) => {
-    const url = 'https://api.darksky.net/forecast/4e2de48cc1c6bf49371ef110a5b90c87/' + latitude + ',' + longitude + '?units=si'
+    const url = 'https://api.darksky.net/forecast/' + process.env.DARKSKY_KEY + '/' + latitude + ',' + longitude + '?units=si'
     request({ url, json: true }, (error, { body } = {}) => {
         if (error) {
             callback('Unable to connect to location services (Darksky)', undefined)
