@@ -6,9 +6,6 @@ const messageTwo = document.querySelector('#message-2')
 const messageThree = document.querySelector('#message-3')
 const iconito = document.querySelector('#iconito')
 
-
-// messageOne.textContent = 'From Javscript'
-
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
     const location = search.value

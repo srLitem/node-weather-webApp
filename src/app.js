@@ -31,6 +31,7 @@ app.get('', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About page',
+        message: 'This application was made using NodeJS with the MapBox and Darksy APIs',
         name: 'Santiago Rhenals'
     })
 })
