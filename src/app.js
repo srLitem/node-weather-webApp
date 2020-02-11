@@ -52,6 +52,7 @@ app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send('No address provided')
     }
+
     //Call endpoint to return unsplash img
     unsplash(req.query.address, (error, image) => {
         if (error) { //If there is an error with the image, show it
