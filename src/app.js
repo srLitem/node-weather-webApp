@@ -3,6 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const geoCode = require('./utils/geoCode.js')
 const forecast = require('./utils/forecast.js')
+const unsplash = require('./utils/unsplash.js')
 
 
 const app = express()
@@ -20,6 +21,9 @@ hbs.registerPartials(partial_path)
 
 // Setup static directory to serve
 app.use(express.static(public_dir))
+
+//Required variables
+var unplashImg
 
 app.get('', (req, res) => {
     res.render('index', {
@@ -48,6 +52,16 @@ app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send('No address provided')
     }
+    //Call endpoint to return unsplash img
+    unsplash(req.query.address, (error, image) => {
+        if (error) { //If there is an error with the image, show it
+            return res.send({ error })
+        } else {
+            unplashImg = image.imageURL
+            console.log(unplashImg)
+        }
+    })
+
     //Llamar a geocode para retornar las coordenadas de la ubicacion
     geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) { //Si hay algun error, muestralo
@@ -62,7 +76,8 @@ app.get('/weather', (req, res) => {
                         location,
                         address: req.query.address,
                         iconito: forecastData.iconito,
-                        precip: forecastData.precipProb
+                        precip: forecastData.precipProb,
+                        imageURL: unplashImg
                     })
                 }
             })
