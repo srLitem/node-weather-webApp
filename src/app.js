@@ -35,7 +35,6 @@ app.get('', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About page',
-        message: 'This application was made using NodeJS with the MapBox and Darksy APIs',
         name: 'Santiago Rhenals'
     })
 })
@@ -59,17 +58,16 @@ app.get('/weather', (req, res) => {
             return res.send({ error })
         } else {
             unplashImg = image.imageURL
-            console.log(unplashImg)
         }
     })
 
-    //Llamar a geocode para retornar las coordenadas de la ubicacion
+    //Call geocode to return coordinates
     geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         if (error) { //Si hay algun error, muestralo
             return res.send({ error })
         } else {
-            forecast(latitude, longitude, (error, forecastData) => { //Llamar a forecast para buscar el pronostico de las coordenadas
-                if (error) { //Si hay algun error, muestralo
+            forecast(latitude, longitude, (error, forecastData) => { //Call forecast to return prediction
+                if (error) { //If there is an error, show it
                     return res.send({ error })
                 } else {
                     res.send({

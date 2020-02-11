@@ -1,5 +1,5 @@
 const request = require('request')
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv').config({ path: __dirname + '/../../.env' })
 
 const forecast = (latitude, longitude, callback) => {
     const url = 'https://api.darksky.net/forecast/' + process.env.DARKSKY_KEY + '/' + latitude + ',' + longitude + '?units=si'
