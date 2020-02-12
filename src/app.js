@@ -72,10 +72,13 @@ app.get('/weather', (req, res) => {
                 } else {
                     res.send({
                         forecastMessage: forecastData.message,
+                        forecast: forecastData.forecast,
+                        temperature: forecastData.temperature,
                         location,
                         address: req.query.address,
                         iconito: forecastData.iconito,
-                        precip: forecastData.precipProb,
+                        precip: forecastData.precipProbM,
+                        precipnum: forecastData.precip,
                         imageURL: unplashImg
                     })
                 }
