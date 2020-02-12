@@ -71,6 +71,7 @@ app.get('/weather', (req, res) => {
                     return res.send({ error })
                 } else {
                     res.send({
+                        summary: forecastData.summary,
                         forecastMessage: forecastData.message,
                         forecast: forecastData.forecast,
                         temperature: forecastData.temperature,
@@ -80,7 +81,6 @@ app.get('/weather', (req, res) => {
                         precip: forecastData.precipProbM,
                         precipnum: forecastData.precip,
                         imageURL: unplashImg,
-                        precipType: forecast.precipType,
                     })
                 }
             })

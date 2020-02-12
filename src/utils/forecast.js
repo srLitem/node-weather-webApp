@@ -11,15 +11,14 @@ const forecast = (latitude, longitude, callback) => {
             callback(body.error, undefined)
         } else {
             Response = {
+                temperature: body.currently.temperature,
                 message: body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degrees out.',
                 forecast: body.daily.data[0].summary,
-                temperature: body.currently.temperature,
+                summary: body.currently.summary,
                 iconito: body.currently.icon,
                 precipProbM: 'There is a ' + (body.currently.precipProbability * 100) + '% chance of rain',
                 precip: body.currently.precipProbability * 100,
-                precipType: body.currently.precipType,
             }
-            console.log(Response.iconito)
             callback(undefined, Response)
         }
     })
