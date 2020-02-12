@@ -79,7 +79,8 @@ app.get('/weather', (req, res) => {
                         iconito: forecastData.iconito,
                         precip: forecastData.precipProbM,
                         precipnum: forecastData.precip,
-                        imageURL: unplashImg
+                        imageURL: unplashImg,
+                        precipType: forecast.precipType,
                     })
                 }
             })

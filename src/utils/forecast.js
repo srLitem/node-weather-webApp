@@ -17,6 +17,7 @@ const forecast = (latitude, longitude, callback) => {
                 iconito: body.currently.icon,
                 precipProbM: 'There is a ' + (body.currently.precipProbability * 100) + '% chance of rain',
                 precip: body.currently.precipProbability * 100,
+                precipType: body.currently.precipType,
             }
             console.log(Response.iconito)
             callback(undefined, Response)
