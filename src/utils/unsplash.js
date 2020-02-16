@@ -10,7 +10,7 @@ const unsplash = (city, callback) => {
             callback('The searched location was not found as an image, please try another search', undefined)
         } else {
             callback(undefined, {
-                imageURL: body.results[0].urls.small,
+                imageURL: body.results[0].urls.regular,
             })
 
         }
