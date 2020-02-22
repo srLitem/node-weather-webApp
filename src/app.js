@@ -55,37 +55,38 @@ app.get('/weather', (req, res) => {
     //Call endpoint to return unsplash img
     unsplash(req.query.address, (error, image) => {
         if (error) { //If there is an error with the image, show it
-            return res.send({ error })
+            return res.status(400).send({ error })
         } else {
             unplashImg = image.imageURL
-        }
-    })
-
-    //Call geocode to return coordinates
-    geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
-        if (error) { //Si hay algun error, muestralo
-            return res.send({ error })
-        } else {
-            forecast(latitude, longitude, (error, forecastData) => { //Call forecast to return prediction
-                if (error) { //If there is an error, show it
-                    return res.send({ error })
+            geoCode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+                if (error) { //Si hay algun error, muestralo
+                    return res.status(400).send({ error })
                 } else {
-                    res.send({
-                        summary: forecastData.summary,
-                        forecastMessage: forecastData.message,
-                        forecast: forecastData.forecast,
-                        temperature: forecastData.temperature,
-                        location,
-                        address: req.query.address,
-                        iconito: forecastData.iconito,
-                        precip: forecastData.precipProbM,
-                        precipnum: forecastData.precip,
-                        imageURL: unplashImg,
+                    forecast(latitude, longitude, (error, forecastData) => { //Call forecast to return prediction
+                        if (error) { //If there is an error, show it
+                            return res.status(400).send({ error })
+                        } else {
+                            res.send({
+                                summary: forecastData.summary,
+                                forecastMessage: forecastData.message,
+                                forecast: forecastData.forecast,
+                                temperature: forecastData.temperature,
+                                location,
+                                address: req.query.address,
+                                iconito: forecastData.iconito,
+                                precip: forecastData.precipProbM,
+                                precipnum: forecastData.precip,
+                                imageURL: unplashImg,
+                            })
+                        }
                     })
                 }
             })
         }
     })
+
+    //Call geocode to return coordinates
+
 })
 
 
